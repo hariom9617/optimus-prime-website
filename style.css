@@ -84,6 +84,7 @@ blockquote {
   border: 0;
 }
 
+/* ---------- HEADER ---------- */
 .site-header {
   position: absolute;
   z-index: 20;
@@ -177,11 +178,12 @@ blockquote {
   color: #fff;
 }
 
+/* ---------- HERO ---------- */
 .hero {
   position: relative;
   display: flex;
-  min-height: 760px;
-  height: max(100vh, 760px);
+  min-height: max(100vh, 760px);
+  height: auto; /* grows with content so nothing collides with the footer strip */
   overflow: hidden;
   color: #fff;
   background: var(--ink-deep);
@@ -232,6 +234,7 @@ blockquote {
 .hero-content {
   align-self: center;
   padding-top: 6rem;
+  padding-bottom: 6.5rem; /* reserves room for .hero-foot */
 }
 .eyebrow {
   display: flex;
@@ -246,6 +249,7 @@ blockquote {
 }
 .eyebrow > span {
   display: inline-block;
+  flex: none;
   width: 1.8rem;
   height: 1px;
   background: var(--red);
@@ -257,7 +261,7 @@ blockquote {
   color: rgba(255, 255, 255, 0.66);
 }
 .hero h1 {
-  max-width: 660px;
+  max-width: 760px;
   font-size: clamp(3.5rem, 7.3vw, 7rem);
   font-weight: 800;
   letter-spacing: -0.077em;
@@ -351,7 +355,7 @@ h2 em {
 .hero-foot {
   position: absolute;
   right: 0;
-  bottom: 2rem;
+  bottom: 1.6rem;
   left: 0;
   display: flex;
   justify-content: space-between;
@@ -373,6 +377,7 @@ h2 em {
   background: rgba(255, 255, 255, 0.55);
 }
 
+/* ---------- INTRO / FOCUS ---------- */
 .section-kicker {
   display: flex;
   align-items: center;
@@ -553,6 +558,7 @@ h2 {
   background: var(--red);
 }
 
+/* ---------- MENTOR ---------- */
 .mentor-section {
   overflow: hidden;
   padding-block: clamp(5.6rem, 9vw, 8.5rem);
@@ -666,6 +672,7 @@ h2 {
   line-height: 1.6;
 }
 
+/* ---------- TEAM ---------- */
 .team-section {
   padding-bottom: clamp(5.7rem, 10vw, 9rem);
 }
@@ -881,6 +888,7 @@ h2 {
   letter-spacing: 0.02em;
 }
 
+/* ---------- PROCESS ---------- */
 .process-section {
   padding-block: clamp(5.5rem, 10vw, 9rem);
   color: #fff;
@@ -913,6 +921,7 @@ h2 {
 }
 .bts-card {
   min-width: 0;
+  overflow: hidden;
   background: #31463a;
 }
 .bts-image {
@@ -924,9 +933,6 @@ h2 {
   transition:
     filter 0.25s ease,
     transform 0.35s ease;
-}
-.bts-card {
-  overflow: hidden;
 }
 .bts-card:hover .bts-image {
   filter: saturate(1.1) brightness(1.1);
@@ -971,6 +977,7 @@ h2 {
   font-size: 0.62rem;
 }
 
+/* ---------- CLOSING / FOOTER ---------- */
 .closing-section {
   padding-block: clamp(5.5rem, 11vw, 10rem);
   background: var(--cream);
@@ -1020,6 +1027,7 @@ h2 {
   color: rgba(255, 255, 255, 0.42);
 }
 
+/* ---------- MOTION ---------- */
 .reveal {
   opacity: 0;
   transform: translateY(18px);
@@ -1043,6 +1051,7 @@ h2 {
   }
 }
 
+/* ---------- TABLET / MOBILE (<= 840px) ---------- */
 @media (max-width: 840px) {
   .site-header {
     height: 5.4rem;
@@ -1095,23 +1104,59 @@ h2 {
   .site-nav .nav-cta {
     font-size: 0.82rem;
   }
+
+  /* HERO (mobile): robot on top, text on solid dark below */
   .hero {
-    min-height: 680px;
-    height: 100svh;
+    min-height: 100svh;
+    height: auto;
+    align-items: flex-end;
   }
   .hero-image {
-    object-position: 66% center;
+    height: 66%; /* image only fills the top part */
+    object-position: 68% 30%; /* keeps robot + faces in frame */
   }
   .hero-shade {
-    background:
-      linear-gradient(
-        90deg,
-        rgba(17, 27, 22, 0.96) 0%,
-        rgba(20, 32, 25, 0.74) 61%,
-        rgba(20, 32, 25, 0.12) 100%
-      ),
-      linear-gradient(0deg, rgba(12, 21, 16, 0.7), transparent 48%);
+    background: linear-gradient(
+      180deg,
+      rgba(17, 27, 22, 0.55) 0%,
+      rgba(17, 27, 22, 0.05) 20%,
+      rgba(17, 27, 22, 0.35) 42%,
+      rgba(17, 27, 22, 0.92) 60%,
+      var(--ink-deep) 70%
+    );
   }
+  .hero-content {
+    align-self: flex-end;
+    margin-top: 40svh; /* leaves the top of the image visible */
+    padding-top: 0;
+    padding-bottom: 5rem;
+  }
+  .eyebrow {
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
+  }
+  .hero h1 {
+    font-size: clamp(2.9rem, 13.5vw, 4.5rem);
+  }
+  .hero-copy {
+    max-width: 100%;
+    margin-top: 1.1rem;
+    line-height: 1.65;
+  }
+  .hero-actions {
+    margin-top: 1.5rem;
+    gap: 1.2rem;
+  }
+  .button {
+    padding: 0.85rem 1.1rem;
+  }
+  .hero-foot {
+    bottom: 1.2rem;
+  }
+  .scroll-indicator {
+    display: none;
+  }
+
   .intro-layout,
   .mentor-layout {
     grid-template-columns: 1fr;
@@ -1149,9 +1194,8 @@ h2 {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  /* Representative badges: moved off the faces on mobile/tablet.
-     They become a slim strip along the bottom of the photo,
-     and the 01/02 index number moves to the top-right corner. */
+  /* Representative badges: slim strip along the bottom of the photo on
+     mobile/tablet, with the 01/02 index number moved to the top-right. */
   .representative-badge {
     top: auto;
     right: 0;
@@ -1165,7 +1209,6 @@ h2 {
     line-height: 1.3;
     box-shadow: none;
   }
-
   .representative-badge ~ .member-index {
     top: 0.6rem;
     right: 0.7rem;
@@ -1174,24 +1217,25 @@ h2 {
   }
 }
 
+/* ---------- SMALL PHONES (<= 560px) ---------- */
 @media (max-width: 560px) {
   .hero {
-    min-height: 650px;
+    min-height: 100svh;
   }
   .hero-content {
-    padding-top: 4rem;
+    padding-top: 0;
   }
   .hero h1 {
-    font-size: clamp(3.2rem, 16vw, 4.75rem);
+    font-size: clamp(2.9rem, 13.5vw, 4.5rem);
   }
   .hero-copy {
-    max-width: 330px;
+    max-width: 100%;
   }
   .hero-foot > :last-child {
     display: none;
   }
   .hero-foot {
-    bottom: 1.4rem;
+    bottom: 1.2rem;
   }
   .focus-grid {
     grid-template-columns: 1fr;
