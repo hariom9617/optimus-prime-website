@@ -598,10 +598,13 @@ h2 {
   height: 100%;
   object-fit: cover;
   object-position: center;
+  /* zoom in on the mentor so he fills the frame instead of the empty room */
+  transform: scale(1.28);
+  transform-origin: 52% 66%;
   transition: transform 0.5s ease;
 }
 .mentor-image-wrap:hover img {
-  transform: scale(1.035);
+  transform: scale(1.33);
 }
 .image-label {
   position: relative;
@@ -615,7 +618,10 @@ h2 {
   text-transform: uppercase;
 }
 .mentor-content .section-kicker {
-  margin-bottom: 3.7rem;
+  margin-bottom: 1.8rem;
+}
+.mentor-content .eyebrow {
+  margin-bottom: 1.1rem;
 }
 .mentor-content h2 {
   max-width: 610px;
@@ -1165,12 +1171,39 @@ h2 {
   .intro-layout {
     padding-bottom: 3rem;
   }
+  /* FACULTY (mobile) */
+  .mentor-section {
+    padding-block: 4.5rem;
+  }
+  .mentor-layout {
+    gap: 2.2rem;
+  }
   .mentor-image-wrap {
-    width: min(100%, 350px);
+    width: calc(
+      100% - 1rem
+    ); /* leaves room so the gold frame never hits the screen edge */
+    max-width: 420px;
     justify-self: start;
   }
+  .mentor-image-wrap::before {
+    top: -0.9rem;
+    right: -0.9rem;
+  }
+  .mentor-image-frame {
+    aspect-ratio: 0.9;
+  }
   .mentor-content .section-kicker {
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.4rem;
+  }
+  .mentor-content h2 {
+    font-size: clamp(2.4rem, 11vw, 3.6rem);
+  }
+  .mentor-content blockquote {
+    margin-top: 1.5rem;
+    font-size: 1.1rem;
+  }
+  .mentor-person {
+    margin-top: 1.6rem;
   }
   .process-top {
     grid-template-columns: 1fr;
