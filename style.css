@@ -52,6 +52,49 @@ blockquote {
   margin: 0;
 }
 
+.event-marquee {
+  width: 100%;
+  overflow: hidden;
+  background: #111827;
+  color: #ffffff;
+  padding: 12px 0;
+  white-space: nowrap;
+  position: relative;
+}
+
+.event-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 18s linear infinite;
+}
+
+.event-marquee-track span {
+  flex-shrink: 0;
+  padding-right: 50px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.event-marquee:hover .event-marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .event-marquee-track {
+    animation: none;
+  }
+}
+
 .container {
   width: min(100% - (var(--pad) * 2), 1200px);
   margin-inline: auto;
