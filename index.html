@@ -15,15 +15,104 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Event marquee at the very top of the page */
+      .event-marquee {
+        position: relative;
+        z-index: 1001;
+        width: 100%;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        background: #111827;
+        color: #ffffff;
+        white-space: nowrap;
+      }
+
+      .event-marquee-track {
+        display: flex;
+        width: max-content;
+        flex-shrink: 0;
+        animation: event-marquee-scroll 22s linear infinite;
+        will-change: transform;
+      }
+
+      .event-marquee-track span {
+        display: block;
+        flex-shrink: 0;
+        padding-right: 3rem;
+        font-family: "DM Mono", monospace;
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+      }
+
+      @keyframes event-marquee-scroll {
+        from { transform: translateX(0); }
+        to { transform: translateX(-50%); }
+      }
+
+      .event-marquee:hover .event-marquee-track,
+      .event-marquee:focus-within .event-marquee-track {
+        animation-play-state: paused;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .event-marquee-track { animation: none; }
+      }
+
+
+      /* Two image logos in the main header */
+      .site-header .header-logos {
+        display: inline-flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 0.8rem;
+        min-width: 0;
+      }
+
+      .site-header .header-logo {
+        display: block;
+        width: auto;
+        height: auto;
+        max-width: 110px;
+        max-height: 48px;
+        object-fit: contain;
+      }
+
+      @media (max-width: 600px) {
+        .site-header .header-logos {
+          gap: 0.45rem;
+        }
+
+        .site-header .header-logo {
+          max-width: 76px;
+          max-height: 38px;
+        }
+      }
+
+      /* Keep the absolute-positioned site navigation below the marquee. */
+      .site-header { top: 44px; }
+    </style>
     <script src="script.js" defer></script>
   </head>
   <body>
+    <!-- Scrolling event marquee -->
+    <div class="event-marquee" aria-label="IDEA SPARK — EUPHORIA 2K26 — ICA DEPARTMENT">
+      <div class="event-marquee-track" aria-hidden="true">
+        <span>✦ IDEA SPARK — EUPHORIA 2K26 — ICA DEPARTMENT ✦</span>
+        <span>✦ IDEA SPARK — EUPHORIA 2K26 — ICA DEPARTMENT ✦</span>
+      </div>
+    </div>
+
     <a class="skip-link" href="#main-content">Skip to content</a>
 
     <header class="site-header" id="top">
-      <a class="brand" href="#top" aria-label="Optimus Prime project home">
-        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
-        <span>OPTIMUS<span>PRIME</span></span>
+      <a class="brand header-logos" href="#top" aria-label="Home">
+        <!-- Replace logo-1.png and logo-2.png with your logo filenames in the assets folder. -->
+        <img class="header-logo header-logo-one" src="assets/Sage_euphoria_logp.png" alt="Logo 1" />
+        <img class="header-logo header-logo-two" src="assets/sage-university-logo.png" alt="Logo 2" />
       </a>
 
       <button
@@ -70,8 +159,7 @@
             <a class="text-link" href="#team">Meet the team <span>↓</span></a>
           </div>
           <div class="material-tags" aria-label="Project material highlights">
-            <span>Reused materials</span><span>Handmade</span
-            ><span>Zero-waste idea</span>
+            <span>INSTITUTE OF COMPUTER APPLICATION</span>
           </div>
         </div>
         <div class="hero-foot container">
