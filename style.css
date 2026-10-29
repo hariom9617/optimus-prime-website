@@ -253,7 +253,7 @@ blockquote {
   z-index: -3;
   animation: hero-scale 1.2s ease-out both;
 } */
- .hero-image {
+.hero-image {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -808,6 +808,35 @@ h2 {
 .member-card {
   min-width: 0;
 }
+/* ---------- FACULTY MENTOR CARD (same layout as leads, different color) ---------- */
+.mentor-card {
+  padding: 0.48rem;
+  border: 1px solid #c9a24a;
+  background: #283a2e;
+  box-shadow: 0.35rem 0.35rem 0 rgba(201, 162, 74, 0.35);
+}
+.mentor-card .member-meta {
+  padding: 0.92rem 0.14rem 0.18rem;
+}
+.mentor-card .member-meta h3 {
+  color: #fff;
+}
+.mentor-card .member-meta p {
+  color: rgba(255, 255, 255, 0.68);
+}
+.mentor-badge {
+  color: var(--ink-deep);
+  background: #eed79f;
+}
+.mentor-card .member-image img {
+  /* same zoom the old mentor photo used, so he fills the frame */
+  transform: scale(1.28);
+  transform-origin: 52% 66%;
+}
+.mentor-card:hover .member-image img {
+  transform: scale(1.33);
+}
+
 .representative-card {
   padding: 0.48rem;
   border: 1px solid rgba(228, 68, 56, 0.78);
